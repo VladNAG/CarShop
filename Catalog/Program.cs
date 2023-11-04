@@ -1,10 +1,16 @@
-using Catalog.Infrostructure;
-using Catalog.Interfeces;
+using Catalog.Data.Infrostructure;
+using Catalog.Data.Interfeces;
+using Catalog.Data.Repository;
 using Catalog.Servises;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<DataProviderDbContent>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddTransient<IProductServise, ProductServis>();
-builder.Services.AddSingleton<IDataProvider, DataProvider>();
+builder.Services.AddTransient<IDataProvider, ProductRepository>();
 
 builder.Services.AddCors();
 
@@ -29,5 +35,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+//DBobjects.Initials(app);
 
 app.Run();

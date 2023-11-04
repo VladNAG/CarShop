@@ -1,6 +1,7 @@
-﻿using Catalog.Entityes;
-using Catalog.Interfeces;
+﻿using Catalog.Data.Entityes;
+using Catalog.Data.Interfeces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Catalog.Controlers
 {
@@ -8,6 +9,7 @@ namespace Catalog.Controlers
     [Route("[controller]")]
     public class ProductController : ControllerBase
     {
+
         private readonly IProductServise _productService;
 
         public ProductController(IProductServise productService)

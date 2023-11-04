@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Catalog.Entityes;
+using Catalog.Data.Entityes;
 
 namespace CarShop.Controlers
 {
-        public class CaarsController : Controller
+    public class CaarsController : Controller
         {
             private HttpClient _httpClient;
             public CaarsController(IHttpClientFactory httpClientFactory)

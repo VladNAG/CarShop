@@ -2,8 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Catalog.Data.Entityes;
+using Microsoft.AspNetCore.Authorization;
 
-namespace CarShop.Controlers
+namespace CarShop.Controllers
 {
     public class CaarsController : Controller
         {

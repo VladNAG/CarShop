@@ -4,13 +4,15 @@ using Catalog.Data.Interfeces;
 
 namespace Catalog.Data.Repository
 {
-    public class ProductRepository: IDataProvider
+    public class ProductRepository : IDataProvider
     {
         private readonly DataProviderDbContent _appDbContent;
+
         public ProductRepository(DataProviderDbContent _appDbContent)
         {
             this._appDbContent = _appDbContent;
         }
+
         public Product[] GetAllProducts()
         {
             return _appDbContent.Products.ToArray();
@@ -32,9 +34,11 @@ namespace Catalog.Data.Repository
             var existingProduct = _appDbContent.Products.FirstOrDefault(p => p.Id == product.Id);
             if (existingProduct != null)
             {
-                existingProduct.Name = product.Name;
                 existingProduct.Price = product.Price;
-                existingProduct.Color = product.Color;
+                existingProduct.img = product.img;
+                existingProduct.shortDesc = product.shortDesc;
+                existingProduct.longDesc = product.longDesc;
+
                 _appDbContent.SaveChanges();
             }
         }

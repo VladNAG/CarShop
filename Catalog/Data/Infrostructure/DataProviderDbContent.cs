@@ -10,7 +10,7 @@ namespace Catalog.Data.Infrostructure
             : base(options)
         {
         }
+
         public DbSet<Product> Products { get; set; }
-        
     }
 }

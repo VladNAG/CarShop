@@ -1,4 +1,4 @@
-﻿namespace Catalog.Data.Entityes
+﻿namespace CarShop.Models.Entityes
 {
     public enum Category
     {

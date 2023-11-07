@@ -35,6 +35,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-//DBobjects.Initials(app);
 
 app.Run();

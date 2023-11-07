@@ -4,12 +4,13 @@
 }
 <h1 style=" color:saddlebrown">@ViewData["Title"]</h1>
 <div>
-    <h>@foreach(var ar in Model)
+    <h>@foreach(var car in Model)
         {
-            <div>
-                <p> Car: @ar.Name</p>
-                <p> Color: @ar.Color</p>
-                <p> Price: @ar.Price</p>
+            <div style="color:darkgrey">
+                <img class="img-thumbnail" src="@car.img" alt="@car.Name" />
+                <h2> @car.Name</h2>
+                <h6>  @car.shortDesc</h6>
+                <h5> Price: @car.Price $ </h5>
                
             </div>
         }

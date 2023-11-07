@@ -9,7 +9,6 @@ namespace Catalog.Controlers
     [Route("[controller]")]
     public class ProductController : ControllerBase
     {
-
         private readonly IProductServise _productService;
 
         public ProductController(IProductServise productService)
@@ -19,7 +18,6 @@ namespace Catalog.Controlers
 
         [HttpGet]
         public Product[] GetAllProduct()
-
         {
             return _productService.GetAll();
         }

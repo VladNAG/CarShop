@@ -3,7 +3,7 @@ using Catalog.Data.Interfeces;
 
 namespace Catalog.Servises
 {
-    public class ProductServis:IProductServise
+    public class ProductServis : IProductServise
     {
         private readonly IDataProvider _dataProvider;
 

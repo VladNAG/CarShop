@@ -7,16 +7,16 @@ using Microsoft.AspNetCore.Authorization;
 namespace CarShop.Controllers
 {
     public class CaarsController : Controller
+    {
+        private HttpClient _httpClient;
+        public CaarsController(IHttpClientFactory httpClientFactory)
         {
-            private HttpClient _httpClient;
-            public CaarsController(IHttpClientFactory httpClientFactory)
-            {
-                _httpClient = httpClientFactory.CreateClient();
-            }
-            [HttpGet]
-            [Route("Catalog")]
-            public async Task<IActionResult> CatalogAsync()
-            {
+            _httpClient = httpClientFactory.CreateClient();
+        }
+        [HttpGet]
+        [Route("Catalog")]
+        public async Task<IActionResult> CatalogAsync()
+        {
             var response = await _httpClient.GetAsync("http://localhost:5193/Product");
             response.EnsureSuccessStatusCode();
             var model = await response.Content.ReadAsAsync<List<Product>>();
@@ -62,17 +62,18 @@ namespace CarShop.Controllers
             _iCarSevises.Delete(id);
             return RedirectToAction("Test");
         }
-
-
+        */
+        
         [HttpGet]
         [Route("Info")]
-        public IActionResult Info(int id)
+        public async Task<IActionResult> InfoAsync(int id)
         {
-
-            var model = _iCarSevises.Get(id);
+            var response = await _httpClient.GetAsync($"http://localhost:5193/Product/{id}");
+            response.EnsureSuccessStatusCode();
+            var model = await response.Content.ReadAsAsync<Product>();
             return View(model);
         }
-
+        /*
         [HttpPost]
         [Route("UpdateTest")]
         public IActionResult UpdateTest(CarViewModel ca)

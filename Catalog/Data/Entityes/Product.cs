@@ -1,7 +1,10 @@
-﻿namespace Catalog.Data.Entityes
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Catalog.Data.Entityes
 {
     public class Product
     {
+        [Key]
         public int Id { get; set; }
 
         public string? Name { get; set; }

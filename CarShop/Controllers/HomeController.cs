@@ -19,7 +19,7 @@ namespace CarShop.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Logout()
         {
             return View();
         }

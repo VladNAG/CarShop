@@ -3,9 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using CarShop.Models.Entityes;
 using Microsoft.AspNetCore.Authorization;
+using Duende.IdentityServer;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.VisualBasic;
 
 namespace CarShop.Controllers
 {
+    [Authorize]
     public class CaarsController : Controller
     {
         private HttpClient _httpClient;
@@ -21,6 +25,11 @@ namespace CarShop.Controllers
             response.EnsureSuccessStatusCode();
             var model = await response.Content.ReadAsAsync<List<Product>>();
             return View(model);
+        }
+
+        public IActionResult Logout()
+        {
+            return SignOut("Cookies", "oidc");
         }
 
         /*[HttpPost]
@@ -63,7 +72,7 @@ namespace CarShop.Controllers
             return RedirectToAction("Test");
         }
         */
-        
+
         [HttpGet]
         [Route("Info")]
         public async Task<IActionResult> InfoAsync(int id)

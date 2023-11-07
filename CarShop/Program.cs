@@ -60,7 +60,7 @@ public class Program
 
         app.UseAuthentication();
         app.UseAuthorization();
-        app.MapDefaultControllerRoute().RequireAuthorization();
+        app.MapDefaultControllerRoute();
         app.Run();
     }
 }

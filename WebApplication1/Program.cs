@@ -22,7 +22,7 @@ namespace WebApplication1
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
+            /*JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
             builder.Services.AddAuthentication(options =>
             {
                 options.DefaultScheme = "Cookies";
@@ -45,7 +45,7 @@ namespace WebApplication1
                 options.GetClaimsFromUserInfoEndpoint = true;
 
                 options.SaveTokens = true;
-            });
+            });*/
             builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
             builder.Services.AddHttpClient();
@@ -71,8 +71,8 @@ namespace WebApplication1
             app.UseAuthentication();
             app.UseAuthorization();
 
-            
-            app.MapDefaultControllerRoute().RequireAuthorization();
+
+            app.MapDefaultControllerRoute();
             app.MapRazorPages();
 
             app.Run();

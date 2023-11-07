@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "http": {
+    "WebClient": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Catalog.Data.Entityes;
+using CarShop.Models.Entityes;
 using Microsoft.AspNetCore.Authorization;
 
 namespace CarShop.Controllers
@@ -14,8 +14,8 @@ namespace CarShop.Controllers
                 _httpClient = httpClientFactory.CreateClient();
             }
             [HttpGet]
-            [Route("Privacy")]
-            public async Task<IActionResult> PrivacyAsync()
+            [Route("Catalog")]
+            public async Task<IActionResult> CatalogAsync()
             {
             var response = await _httpClient.GetAsync("http://localhost:5193/Product");
             response.EnsureSuccessStatusCode();

@@ -10,7 +10,7 @@
                 <img class="img-thumbnail" src="@car.img" alt="@car.Name" width="500" height="300"/>
                 <h2> @car.Name</h2>
                 <h6>  @car.shortDesc</h6>
-                <h5> Price: @car.Price $ </h5>
+                <h5> Price: @car.Price.ToString("N2") $ </h5>
                 <h5> Category:@CategoryExtions.ToDisplayName(@car.Category) </h5>
                <span>  @using (Html.BeginForm("Info", "Caars", FormMethod.Get))
                {

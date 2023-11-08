@@ -6,6 +6,7 @@
         Disel,
         Fuel
     }
+
     public static class CategoryExtions
     {
         public static string ToDisplayName(this Category category) => category switch

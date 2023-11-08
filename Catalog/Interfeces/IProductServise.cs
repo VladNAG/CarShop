@@ -1,6 +1,6 @@
 ﻿using Catalog.Data.Entityes;
 
-namespace Catalog.Data.Interfeces
+namespace Catalog.Interfeces
 {
     public interface IProductServise
     {

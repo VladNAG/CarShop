@@ -1,6 +1,6 @@
 using Catalog.Data.Infrostructure;
-using Catalog.Data.Interfeces;
 using Catalog.Data.Repository;
+using Catalog.Interfeces;
 using Catalog.Servises;
 using Microsoft.EntityFrameworkCore;
 

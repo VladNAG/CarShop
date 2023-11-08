@@ -1,5 +1,5 @@
 ﻿using Catalog.Data.Entityes;
-using Catalog.Data.Interfeces;
+using Catalog.Interfeces;
 
 namespace Catalog.Servises
 {

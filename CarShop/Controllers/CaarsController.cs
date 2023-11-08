@@ -17,6 +17,7 @@ namespace CarShop.Controllers
         {
             _httpClient = httpClientFactory.CreateClient();
         }
+
         [HttpGet]
         [Route("Catalog")]
         public async Task<IActionResult> CatalogAsync()
@@ -82,6 +83,7 @@ namespace CarShop.Controllers
             var model = await response.Content.ReadAsAsync<Product>();
             return View(model);
         }
+
         /*
         [HttpPost]
         [Route("UpdateTest")]

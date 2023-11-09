@@ -7,27 +7,33 @@
 <table width="90%" align="center">
   <thead>
     <tr>
-      <th align="center">Quantity</th>
+      <th align="left">Quantity</th>
       <th align="left">Item</th>
-      <th align="right">Price</th>
-      <th align="right">Subtotal</th>
+      <th align="left">Price</th>
+      <th align="left">Subtotal</th>
     </tr>
   </thead>
   <tbody>
     @foreach (var line in Model.Cart.Lines) {
       <tr>
-        <td align="center">@line.Quantity</td>
+        <td align="left">@line.Quantity</td>
         <td align="left">@line.Product.Name</td>
-        <td align="right">@line.Product.Price.ToString("c")</td>
-        <td align="right">@((line.Quantity * line.Product.Price).ToString("c"))</td>
+        <td align="left">@line.Product.Price.ToString("N2") $</td>
+        <td align="left">@((line.Quantity * line.Product.Price).ToString("N2")) $</td>
+        <td align="center">@using (Html.BeginForm("RemoveFromCart", "Cart", FormMethod.Get))
+               {
+                   <input type="hidden" name="id" value="@line.Product.Id"/>
+                 <span>  <button  type="submit">X</button></span>
+               }
+            </td>
       </tr>
     }
   </tbody>
   <tfoot>
     <tr>
-      <td colspan="3" align="right">Total:</td>
-      <td align="right">
-        @Model.Cart.ComputeTotalValue().ToString("c")
+      <td colspan="3" align="left">Total:</td>
+      <td align="left">
+        @Model.Cart.ComputeTotalValue().ToString("N2") $
       </td>
     </tr>
   </tfoot>
@@ -36,7 +42,7 @@
     @using (Html.BeginForm("Catalog", "Caars", FormMethod.Get))
                {
                    <input type="hidden"/>
-                  <button  type="submit">Return</button>
+                  <button  type="submit">Return to shoping</button>
                }
  </span>
 </div>

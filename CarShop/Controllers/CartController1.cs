@@ -5,9 +5,11 @@ using System.Web;
 using Microsoft.AspNetCore.Session;
 using System;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarShop.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
         private HttpClient _httpClient;
@@ -44,7 +46,7 @@ namespace CarShop.Controllers
                 SaveCart(cart);
             }
 
-            return RedirectToAction("Catalog", "Caars");
+            return RedirectToAction("MyCart");
         }
 
         public IActionResult RemoveFromCart(int id)
@@ -54,10 +56,12 @@ namespace CarShop.Controllers
             var product = response.Content.ReadAsAsync<Product>().Result;
             if (product != null)
             {
-                GetCart().RemoveLine(product);
+                var cart = GetCart();
+                cart.RemoveLine(product);
+                SaveCart(cart);
             }
 
-            return RedirectToAction("Catalog");
+            return RedirectToAction("MyCart");
         }
 
         private Cart GetCart()

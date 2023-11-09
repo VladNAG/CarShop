@@ -1,4 +1,4 @@
-﻿namespace User.Data.Entityes
+﻿namespace CarShop.Models.Entityes
 {
     public class Order
     {

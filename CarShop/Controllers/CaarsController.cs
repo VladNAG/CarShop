@@ -33,7 +33,8 @@ namespace CarShop.Controllers
             return SignOut("Cookies", "oidc");
         }
 
-        /*[HttpPost]
+        /*
+        [HttpPost]
         [Route("Caars/Test")]
         public IActionResult GreateTest(CarViewModel ca)
         {

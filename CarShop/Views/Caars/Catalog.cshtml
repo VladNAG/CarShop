@@ -17,6 +17,11 @@
                    <input type="hidden" name="id" value="@car.Id"/>
                  <span>  <button  type="submit">Info</button></span>
                }</span> 
+               <span>  @using (Html.BeginForm("AddToCart", "Cart", FormMethod.Get))
+               {
+                   <input type="hidden" name="id" value="@car.Id"/>
+                 <span>  <button  type="submit">Add to Cart</button></span>
+               }</span> 
             </div>
         }
     </h>

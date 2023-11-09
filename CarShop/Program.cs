@@ -33,7 +33,13 @@ public class Program
 
                 options.SaveTokens = true;
             });
-
+        builder.Services.AddDistributedMemoryCache();
+        builder.Services.AddSession(options =>
+        {
+            options.IdleTimeout = TimeSpan.FromMinutes(20);
+            options.Cookie.Name = "Cart";
+            options.Cookie.IsEssential = true;
+        });
         builder.Services.AddControllersWithViews();
         builder.Services.AddHttpClient();
 
@@ -52,6 +58,7 @@ public class Program
         app.UseStaticFiles();
 
         app.UseRouting();
+        app.UseSession();
 
         app.UseAuthentication();
         app.UseAuthorization();

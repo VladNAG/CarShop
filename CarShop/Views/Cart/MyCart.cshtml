@@ -45,4 +45,11 @@
                   <button  type="submit">Return to shoping</button>
                }
  </span>
+ <span>
+    @using (Html.BeginForm("CeateOrder", "Order", FormMethod.Get))
+               {
+                   <input type="hidden"/>
+                  <button  type="submit">Create order</button>
+               }
+ </span>
 </div>

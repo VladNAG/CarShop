@@ -35,7 +35,6 @@ namespace CarShop.Controllers
 
         /*
         [HttpPost]
-        [Route("Caars/Test")]
         public IActionResult GreateTest(CarViewModel ca)
         {
             if (ModelState.IsValid)

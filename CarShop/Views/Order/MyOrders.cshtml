@@ -1,0 +1,35 @@
+﻿
+@{
+  ViewBag.Title = "Sports Store: Your Cart";
+}
+<h2> - All orders</h2>
+<div>
+<table width="90%" align="center">
+  <thead>
+    <tr>
+      <th align="left">LastName</th>
+      <th align="left">FirstName</th>
+      <th align="left">Phone</th>
+      <th align="left">Created</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var line in Model) {
+      <tr>
+        <td align="left">@line.LastName</td>
+        <td align="left">@line.FirstName</td>
+        <td align="left">@line.Phone</td>
+        <td align="left">@line.Created.ToString("dd.MM.yyyy HH:mm:ss")</td>
+      </tr>
+    }
+  </tbody>
+  
+</table>
+<span>
+    @using (Html.BeginForm("Catalog", "Caars", FormMethod.Get))
+               {
+                   <input type="hidden"/>
+                  <button  type="submit">Return to shoping</button>
+               }
+ </span>
+</div>

@@ -18,14 +18,6 @@ namespace CarShop.Controllers
             _httpClient = httpClientFactory.CreateClient();
         }
 
-        /*private static ShopCart GetCart(IServiceProvider service)
-        {
-            ISession? session = service.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
-            string shopCartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
-            session.SetString("CartId", shopCartId);
-            return new ShopCart();
-        }*/
-
         public ViewResult MyCart()
         {
             return View(new CartIndexViewModel

@@ -11,6 +11,5 @@ namespace User.Data.Inforstructure
         }
 
         public DbSet<Order> Orders { get; set; }
-        public DbSet<ShopCart> ShopCarts { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace User.Data.Entityes
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace User.Data.Entityes
 {
     public class Order
     {
@@ -16,6 +18,7 @@
 
         public int? IdUser { get; set; }
 
+        [NotMapped]
         public List<int>? IdProducts { get; set; }
     }
 }

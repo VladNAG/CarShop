@@ -34,6 +34,9 @@ namespace CarShop.Controllers
         {
             if (ModelState.IsValid)
             {
+                var cart = GetCart();
+                order.IdProducts = cart.Lines.Select(x=>x.Product.Id).ToList();
+                order.Created = DateTime.Now;
                 var jsonObject = JsonConvert.SerializeObject(order);
                 var content = new StringContent(jsonObject.ToString(), Encoding.UTF8, "application/json");
 
@@ -45,6 +48,18 @@ namespace CarShop.Controllers
             {
                 return View("NotSaveOrder");
             }
+        }
+
+        private Cart GetCart()
+        {
+            var cartstring = HttpContext.Session.GetString("Cart");
+            if (string.IsNullOrEmpty(cartstring))
+            {
+                return new Cart();
+            }
+
+            var cart = JsonConvert.DeserializeObject<Cart>(HttpContext.Session.GetString("Cart"));
+            return cart;
         }
     }
 }

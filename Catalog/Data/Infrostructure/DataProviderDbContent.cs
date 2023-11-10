@@ -9,8 +9,11 @@ namespace Catalog.Data.Infrostructure
         public DataProviderDbContent(DbContextOptions<DataProviderDbContent> options)
             : base(options)
         {
+
         }
 
         public DbSet<Product> Products { get; set; }
+
+
     }
 }

@@ -46,10 +46,35 @@
                }
  </span>
  <span>
-    @using (Html.BeginForm("CeateOrder", "Order", FormMethod.Get))
+    @using (Html.BeginForm("CreateOrder", "Order", FormMethod.Get))
                {
                    <input type="hidden"/>
-                  <button  type="submit">Create order</button>
+                  <button  type="submit">Return to shoping</button>
                }
  </span>
 </div>
+<div>
+            <h4 style="color:saddlebrown">Save Order</h4>
+            @using (Html.BeginForm("SaveOrder", "Order", FormMethod.Post))
+               {
+                
+            <p><label asp-for="Order.FirstName" >First Name  </label><br />
+            <input type="text" asp-for="Order.FirstName"/>
+            <span asp-validation-for="Order.FirstName" />
+            </p>
+            
+            <p><label asp-for="Order.LastName">Last Name</label><br />
+           <input type="text"  asp-for="Order.LastName"/>
+           <span asp-validation-for="Order.LastName" /></p>
+           
+           <p>  <label asp-for="Order.Email">Email </label><br />
+            <input type="text" asp-for="Order.Email"/>
+            <span asp-validation-for="Order.Email" /></p>
+
+            <p>  <label asp-for="Order.Phone">Phone </label><br />
+            <input type="text" asp-for="Order.Phone"/>
+            <span asp-validation-for="Order.Phone" /></p>
+           
+          <p> <button type="submit">Create order</button></p>
+              }
+    </div>

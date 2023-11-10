@@ -1,9 +1,9 @@
 ﻿@model CarShop.Models.Entityes.Order
 <div>
             <h4 style="color:saddlebrown">Save Order</h4>
-            @using (Html.BeginForm("Save", "Order", FormMethod.Post))
+            @using (Html.BeginForm("SaveOrder", "Order", FormMethod.Post))
                {
-                 <p> <input type="hidden" name="id" value="@Model.Id"/></p>
+                 
             <p><label asp-for="FirstName" >First Name  </label><br />
             <input type="text" asp-for="FirstName"/>
             <span asp-validation-for="FirstName" />

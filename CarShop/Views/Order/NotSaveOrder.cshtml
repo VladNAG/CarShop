@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Sorry, order not saveed ";
+}
+<h1>@ViewData["Title"]</h1>
+<div>
+<span>
+    @using (Html.BeginForm("Catalog", "Caars", FormMethod.Get))
+               {
+                   <input type="hidden"/>
+                  <button  type="submit">Return to shoping</button>
+               }
+ </span>
+</div>

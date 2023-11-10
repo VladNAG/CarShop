@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Session;
 using System;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Authorization;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Text;
 
 namespace CarShop.Controllers
 {
@@ -29,17 +29,26 @@ namespace CarShop.Controllers
         }
 
         [HttpPost]
-        public async Task SaveOrderAsync([FromBody] Order order)
+        public async Task<IActionResult> SaveOrderAsync(Order order)
         {
-            var json = JsonConvert.SerializeObject(order);
-            using HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, "http://localhost:5247/Order");
-            await _httpClient.SendAsync(request);
-            RedirectToAction("OderShipped");
-        }
+            if (ModelState.IsValid)
+            {
+                var json = JsonConvert.SerializeObject(order);
+                var content = new StringContent(json);
 
-        public IActionResult CeateOrder()
+                var response = await _httpClient.PostAsync("http://localhost:5247/Order", content);
+                var contents = await response.Content.ReadAsStringAsync();
+                return View("SaveOrder");
+            }
+            else
+            {
+            return View("NotSaveOrder");
+            }
+    }
+
+        public ActionResult CreateOrder()
         {
-          return RedirectToAction("SaveOrder");
+            return View("CreateOrder");
         }
     }
 }

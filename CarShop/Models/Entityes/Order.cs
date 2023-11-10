@@ -4,7 +4,7 @@ namespace CarShop.Models.Entityes
 {
     public class Order
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [StringLength(20, MinimumLength = 3, ErrorMessage = "The LastName must be from 3 to 20 characters")]
         public string? LastName { get; set; }
@@ -12,7 +12,7 @@ namespace CarShop.Models.Entityes
         [StringLength(20, MinimumLength = 3, ErrorMessage = "The FirstName must be from 3 to 20 characters")]
         public string? FirstName { get; set; }
 
-        [StringLength(15, MinimumLength = 10, ErrorMessage = "The Phone must be from 3 to 20 characters")]
+        [StringLength(15, MinimumLength = 10, ErrorMessage = "The Phone must be from 10 to 15 characters")]
         public string? Phone { get; set; }
 
         [StringLength(30, MinimumLength = 7, ErrorMessage = "The name Email be @gmail.com")]

@@ -45,19 +45,20 @@
                   <button  type="submit">Return to shoping</button>
                }
  </span>
- <span>
-    @using (Html.BeginForm("CreateOrder", "Order", FormMethod.Get))
-               {
-                   <input type="hidden"/>
-                  <button  type="submit">Return to shoping</button>
-               }
- </span>
+
 </div>
 <div>
+
             <h4 style="color:saddlebrown">Save Order</h4>
             @using (Html.BeginForm("SaveOrder", "Order", FormMethod.Post))
-               {
-                
+          {/*
+            @foreach (var line in Model.Cart.Lines)
+            {
+             @Model.Order.IdProducts.Add(line.Product.Id)
+            }
+            
+             <input type="hidden" name="IdProducts" value="@Model.Order.IdProducts"/>
+         <input type="hidden" name="Created" value="@DateTime.Now()"/>*/
             <p><label asp-for="Order.FirstName" >First Name  </label><br />
             <input type="text" asp-for="Order.FirstName"/>
             <span asp-validation-for="Order.FirstName" />
@@ -76,5 +77,5 @@
             <span asp-validation-for="Order.Phone" /></p>
            
           <p> <button type="submit">Create order</button></p>
-              }
+           }
     </div>

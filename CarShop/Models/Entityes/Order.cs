@@ -4,7 +4,7 @@ namespace CarShop.Models.Entityes
 {
     public class Order
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         [StringLength(20, MinimumLength = 3, ErrorMessage = "The LastName must be from 3 to 20 characters")]
         public string? LastName { get; set; }

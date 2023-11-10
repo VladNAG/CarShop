@@ -7,6 +7,7 @@ using System;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Authorization;
 using System.Text;
+using System.Text.Json.Nodes;
 
 namespace CarShop.Controllers
 {
@@ -33,8 +34,8 @@ namespace CarShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                var json = JsonConvert.SerializeObject(order);
-                var content = new StringContent(json);
+                var jsonObject = JsonConvert.SerializeObject(order);
+                var content = new StringContent(jsonObject.ToString(), Encoding.UTF8, "application/json");
 
                 var response = await _httpClient.PostAsync("http://localhost:5247/Order", content);
                 var contents = await response.Content.ReadAsStringAsync();
@@ -42,13 +43,8 @@ namespace CarShop.Controllers
             }
             else
             {
-            return View("NotSaveOrder");
+                return View("NotSaveOrder");
             }
-    }
-
-        public ActionResult CreateOrder()
-        {
-            return View("CreateOrder");
         }
     }
 }

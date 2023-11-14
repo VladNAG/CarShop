@@ -1,0 +1,28 @@
+﻿
+ @{
+    ViewData["Title"] = "Welcome in Catalog CARS";
+}
+<h1 style=" color:saddlebrown">@ViewData["Title"]</h1>
+<div>
+    <h>@foreach(var car in Model)
+        {
+            <div class="Product">
+                <img class="img-thumbnail" src="@car.img" alt="@car.Name" width="500" height="300"/>
+                <h2> @car.Name</h2>
+                <h6>  @car.shortDesc</h6>
+                <h5> Price: @car.Price.ToString("N2") $ </h5>
+                <h5> Category:@CategoryExtions.ToDisplayName(@car.Category) </h5>
+               <span>  @using (Html.BeginForm("Info", "Caars", FormMethod.Get))
+               {
+                   <input type="hidden" name="id" value="@car.Id"/>
+                 <span>  <button  type="submit">Info</button></span>
+               }</span> 
+               <span>  @using (Html.BeginForm("AddToCart", "Cart", FormMethod.Get))
+               {
+                   <input type="hidden" name="id" value="@car.Id"/>
+                 <span>  <button  type="submit">Add to Cart</button></span>
+               }</span> 
+            </div>
+        }
+    </h>
+</div>

@@ -20,3 +20,7 @@ html {
 body {
   margin-bottom: 60px;
 }
+Product {
+    background-color: lavender;
+    border-block-color:black;
+}

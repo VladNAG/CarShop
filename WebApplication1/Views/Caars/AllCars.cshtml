@@ -1,0 +1,17 @@
+﻿
+ @{
+    ViewData["Title"] = "Welcome in Catalog CARS";
+}
+<h1 style=" color:saddlebrown">@ViewData["Title"]</h1>
+<div>
+    <h>@foreach(var ar in Model)
+        {
+            <div>
+                <p> Car: @ar.Name</p>
+                <p> Color: @ar.Color</p>
+                <p> Price: @ar.Price</p>
+               
+            </div>
+        }
+    </h>
+</div>

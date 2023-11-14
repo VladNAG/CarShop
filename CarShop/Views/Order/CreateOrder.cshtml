@@ -1,0 +1,26 @@
+﻿@model CarShop.Models.Entityes.Order
+<div>
+            <h4 style="color:saddlebrown">Save Order</h4>
+            @using (Html.BeginForm("SaveOrder", "Order", FormMethod.Post))
+               {
+                 
+            <p><label asp-for="FirstName" >First Name  </label><br />
+            <input type="text" asp-for="FirstName"/>
+            <span asp-validation-for="FirstName" />
+            </p>
+            
+            <p><label asp-for="LastName">Last Name</label><br />
+           <input type="text"  asp-for="LastName"/>
+           <span asp-validation-for="LastName" /></p>
+           
+           <p>  <label asp-for="Email">Email </label><br />
+            <input type="text" asp-for="Email"/>
+            <span asp-validation-for="Email" /></p>
+
+            <p>  <label asp-for="Phone">Phone </label><br />
+            <input type="text" asp-for="Phone"/>
+            <span asp-validation-for="Phone" /></p>
+           
+          <p> <button type="submit">SEND</button></p>
+              }
+    </div>

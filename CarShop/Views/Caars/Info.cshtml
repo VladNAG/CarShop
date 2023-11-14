@@ -1,0 +1,16 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Info about ";
+}
+<h1>@ViewData["Title"]@Model.Name</h1>
+<div class="Product">
+                <img class="img-thumbnail" src="@Model.img" alt="@Model.Name"/>
+                <h2> @Model.Name</h2>
+                <h6>  @Model.longDesc</h6>
+                <h5> Price: @Model.Price.ToString("N2") $ </h5>
+               @using (Html.BeginForm("Catalog", "Caars", FormMethod.Get))
+               {
+                   <input type="hidden"/>
+                  <button  type="submit">Return</button>
+               }
+            </div>

@@ -1,0 +1,81 @@
+﻿@model CarShop.Models.Entityes.CartIndexViewModel
+@{
+  ViewBag.Title = "Sports Store: Your Cart";
+}
+<h2>Your cart</h2>
+<div>
+<table width="90%" align="center">
+  <thead>
+    <tr>
+      <th align="left">Quantity</th>
+      <th align="left">Item</th>
+      <th align="left">Price</th>
+      <th align="left">Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var line in Model.Cart.Lines) {
+      <tr>
+        <td align="left">@line.Quantity</td>
+        <td align="left">@line.Product.Name</td>
+        <td align="left">@line.Product.Price.ToString("N2") $</td>
+        <td align="left">@((line.Quantity * line.Product.Price).ToString("N2")) $</td>
+        <td align="center">@using (Html.BeginForm("RemoveFromCart", "Cart", FormMethod.Get))
+               {
+                   <input type="hidden" name="id" value="@line.Product.Id"/>
+                 <span>  <button  type="submit">X</button></span>
+               }
+            </td>
+      </tr>
+    }
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3" align="left">Total:</td>
+      <td align="left">
+        @Model.Cart.ComputeTotalValue().ToString("N2") $
+      </td>
+    </tr>
+  </tfoot>
+</table>
+<span>
+    @using (Html.BeginForm("Catalog", "Caars", FormMethod.Get))
+               {
+                   <input type="hidden"/>
+                  <button  type="submit">Return to shoping</button>
+               }
+ </span>
+
+</div>
+<div>
+
+            <h4 style="color:saddlebrown">Save Order</h4>
+            @using (Html.BeginForm("SaveOrder", "Order", FormMethod.Post))
+          {/*
+            @foreach (var line in Model.Cart.Lines)
+            {
+             @Model.Order.IdProducts.Add(line.Product.Id)
+            }
+            
+             <input type="hidden" name="IdProducts" value="@Model.Order.IdProducts"/>
+         <input type="hidden" name="Created" value="@DateTime.Now()"/>*/
+            <p><label asp-for="Order.FirstName" >First Name  </label><br />
+            <input type="text" asp-for="Order.FirstName"/>
+            <span asp-validation-for="Order.FirstName" />
+            </p>
+            
+            <p><label asp-for="Order.LastName">Last Name</label><br />
+           <input type="text"  asp-for="Order.LastName"/>
+           <span asp-validation-for="Order.LastName" /></p>
+           
+           <p>  <label asp-for="Order.Email">Email </label><br />
+            <input type="text" asp-for="Order.Email"/>
+            <span asp-validation-for="Order.Email" /></p>
+
+            <p>  <label asp-for="Order.Phone">Phone </label><br />
+            <input type="text" asp-for="Order.Phone"/>
+            <span asp-validation-for="Order.Phone" /></p>
+           
+          <p> <button type="submit">Create order</button></p>
+           }
+    </div>
